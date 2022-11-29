@@ -42,3 +42,15 @@
        FOREIGN KEY (hydraulic_valve_id) REFERENCES hydraulic_valves (id)
     );
     create unique index store_unique_modelName_idx on labels (model_name);
+
+  create TABLE users
+    (
+      id                     INTEGER                       DEFAULT nextval('GLOBAL_SEQ'),
+      email                  VARCHAR(255)                  NOT NULL,
+      firs_name              VARCHAR(50)                   NOT NULL,
+      last_name              VARCHAR(100)                  NOT NULL,
+      password               VARCHAR(255)                  NOT NULL,
+      role                   VARCHAR(20) DEFAULT 'USER'    NOT NULL,
+      status                 VARCHAR(20) DEFAULT 'ACTIV'   NOT NULL
+    );
+    create unique index store_unique_email_idx on users (email);

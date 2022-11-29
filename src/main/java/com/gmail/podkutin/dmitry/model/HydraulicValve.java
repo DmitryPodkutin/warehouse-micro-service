@@ -1,6 +1,5 @@
 package com.gmail.podkutin.dmitry.model;
 
-import com.gmail.podkutin.dmitry.model.dto.HydraulicValveTO;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -48,11 +47,6 @@ public class HydraulicValve extends AbstractBaseEntity {
         this.amount = hydraulicValve.getAmount();
         this.price = hydraulicValve.price;
         this.numberOfElectromagnetsToComplete = hydraulicValve.getNumberOfElectromagnetsToComplete();
-    }
-
-    public HydraulicValve(HydraulicValveTO hydraulicValveTO) {
-        this.model = hydraulicValveTO.getModel();
-        this.amount = hydraulicValveTO.getAmount();
     }
 
     @Override

@@ -19,5 +19,8 @@ insert into labels (model_name, amount, hydraulic_valve_id) values ('PX06574A1О
 insert into labels (model_name, amount, hydraulic_valve_id) values ('PX06341', 10,100007);
 insert into labels (model_name, amount, hydraulic_valve_id) values ('PX06441', 10,100008);
 
+insert into users (email, firs_name, last_name, password, role, status) values ('admin@mail.com', 'Dmitry','Podkutin','$2a$12$fjW87B.zmCSzXf6dFOuAR.Rx4M6FJuvkPWp6tZJFRrlUzjuq//fNW','ADMIN','ACTIVE');
+insert into users (email, firs_name, last_name, password, role, status) values ('user@mail.com', 'Ivonov','Ivan','$2a$12$AcxYG71za7M5L1t/huYxpOVhiL2ZsQU3yYSvcyJBQ.ocOtzT7S8kG','USER','ACTIVE');
+
 
 
