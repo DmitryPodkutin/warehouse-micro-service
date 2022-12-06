@@ -1,7 +1,6 @@
 package com.gmail.podkutin.dmitry.service;
 
 import com.gmail.podkutin.dmitry.model.AbstractBaseEntity;
-import com.gmail.podkutin.dmitry.repository.CommonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
