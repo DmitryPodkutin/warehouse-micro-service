@@ -13,7 +13,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @MappedSuperclass
-public class AbstractBaseEntity implements HasId {
+public  class AbstractBaseEntity implements HasId {
     public static final int START_SEQ = 100000;
 
     @Id
@@ -25,13 +25,13 @@ public class AbstractBaseEntity implements HasId {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         AbstractBaseEntity that = (AbstractBaseEntity) o;
-        return id.equals(that.id);
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return getClass().hashCode();
     }
 }

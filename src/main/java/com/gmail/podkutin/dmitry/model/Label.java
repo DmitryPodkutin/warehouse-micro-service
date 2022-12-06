@@ -5,9 +5,12 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -36,19 +39,13 @@ public class Label extends AbstractBaseEntity {
         this.hydraulic_valve_id = hydraulic_valve_id;
     }
 
-    public Label(String modelName, Integer amount, Integer hydraulic_valve_id) {
-        this.modelName = modelName;
-        this.amount = amount;
-        this.hydraulic_valve_id = hydraulic_valve_id;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Label label = (Label) o;
-        return Objects.equals(modelName, label.modelName) && Objects.equals(amount, label.amount) && Objects.equals(hydraulic_valve_id, label.hydraulic_valve_id);
+        return modelName.equals(label.modelName) && amount.equals(label.amount) && hydraulic_valve_id.equals(label.hydraulic_valve_id);
     }
 
     @Override

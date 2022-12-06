@@ -1,8 +1,7 @@
 package com.gmail.podkutin.dmitry.model;
 
 public enum Volt {
-
-VOLT_12(12),
+    VOLT_12(12),
     VOLT_24(24),
     VOLT_36(36),
     VOLT_110(110),

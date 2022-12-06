@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Objects;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -15,10 +16,7 @@ import java.util.Objects;
 public class ElectromagnetModel extends AbstractBaseEntity {
     private String model;
 
-    public ElectromagnetModel(String model) {
-        this.model = model;
-    }
-
+    @Builder
     public ElectromagnetModel(Integer id, String model) {
         super(id);
         this.model = model;

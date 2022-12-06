@@ -1,19 +1,18 @@
 package com.gmail.podkutin.dmitry.model;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
 @Entity
 @Table(name = "hydraulic_valves")
-
 public class HydraulicValve extends AbstractBaseEntity {
 
     @Column(name = "model")
@@ -42,23 +41,21 @@ public class HydraulicValve extends AbstractBaseEntity {
         this.electromagnetModel = electromagnetModel;
     }
 
-    public HydraulicValve(HydraulicValve hydraulicValve) {
-        this.model = hydraulicValve.getModel();
-        this.amount = hydraulicValve.getAmount();
-        this.price = hydraulicValve.price;
-        this.numberOfElectromagnetsToComplete = hydraulicValve.getNumberOfElectromagnetsToComplete();
+    public String model() {
+        return model;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         HydraulicValve that = (HydraulicValve) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
+        return model.equals(that.model) && amount.equals(that.amount) && price.equals(that.price) && numberOfElectromagnetsToComplete.equals(that.numberOfElectromagnetsToComplete) && electromagnetModel.equals(that.electromagnetModel);
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(super.hashCode(), model, amount, price, numberOfElectromagnetsToComplete, electromagnetModel);
     }
 }
