@@ -9,10 +9,10 @@ import java.util.List;
 @Component
 public class LabelTestData implements TestData<Label> {
 
-    public static final Label LABEL_1 = new Label(100013, "PX06574A1", 10, 100009);
-    public static final Label LABEL_2 = new Label(100014, "PX06574A1ОФ", 10, 100010);
-    public static final Label LABEL_3 = new Label(100015, "PX06341", 10, 100011);
-    public static final Label LABEL_4 = new Label(100016, "PX06441", 10, 100012);
+    public static final Label LABEL_1 = new Label(100013, "РХ06574А1", 10, 100009);
+    public static final Label LABEL_2 = new Label(100014, "РХ06574А1ОФ", 10, 100010);
+    public static final Label LABEL_3 = new Label(100015, "РХ06341", 10, 100011);
+    public static final Label LABEL_4 = new Label(100016, "РХ06441", 10, 100012);
 
     @Override
     public Label getFirsEntity() {

@@ -12,9 +12,9 @@ import java.util.List;
 public class HydraulicValveTestData implements TestData<HydraulicValve> {
 
     public static final HydraulicValve HYDRAULIC_VALVE_1 = new HydraulicValve(100009, "РХ06574А1", 10, new BigDecimal("4470.00"), 1, new ElectromagnetModel(100001, "NG6"));
-    public static final HydraulicValve HYDRAULIC_VALVE_2 = new HydraulicValve(100010, "PX06574A1ОФ", 2, new BigDecimal("4920.00"), 2, new ElectromagnetModel(100001, "NG6"));
-    public static final HydraulicValve HYDRAULIC_VALVE_3 = new HydraulicValve(100011, "РХ06574А1", 2, new BigDecimal("4920.00"), 2, new ElectromagnetModel(100001, "NG6"));
-    public static final HydraulicValve HYDRAULIC_VALVE_4 = new HydraulicValve(100012, "РХ06574А1", 2, new BigDecimal("4920.00"), 2, new ElectromagnetModel(100001, "NG6"));
+    public static final HydraulicValve HYDRAULIC_VALVE_2 = new HydraulicValve(100010, "РХ06574А1ОФ", 2, new BigDecimal("4920.00"), 2, new ElectromagnetModel(100001, "NG6"));
+    public static final HydraulicValve HYDRAULIC_VALVE_3 = new HydraulicValve(100011, "РХ06341", 2, new BigDecimal("4920.00"), 2, new ElectromagnetModel(100001, "NG6"));
+    public static final HydraulicValve HYDRAULIC_VALVE_4 = new HydraulicValve(100012, "РХ06441", 2, new BigDecimal("4920.00"), 2, new ElectromagnetModel(100001, "NG6"));
 
     @Override
     public HydraulicValve getFirsEntity() {
@@ -38,7 +38,7 @@ public class HydraulicValveTestData implements TestData<HydraulicValve> {
                 .id(100009)
                 .model("UpdateModel")
                 .amount(3)
-                .price(new BigDecimal("56"))
+                .price(new BigDecimal("56.00"))
                 .numberOfElectromagnetsToComplete(2)
                 .electromagnetModel(new ElectromagnetModel(100001, "NG6"))
                 .build();
