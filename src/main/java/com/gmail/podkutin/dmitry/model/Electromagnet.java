@@ -19,14 +19,14 @@ public class Electromagnet extends AbstractBaseEntity {
     @JoinColumn(name = "model_id")
     private ElectromagnetModel electromagnetModel;
 
-    @Enumerated(EnumType.STRING)
-    private Volt voltage;
-
     @Column(name = "amount")
     private Integer amount;
 
     @Column(name = "price")
     private BigDecimal price;
+
+    @Enumerated(EnumType.STRING)
+    private Volt voltage;
 
     @Builder
     public Electromagnet(Integer id, ElectromagnetModel electromagnetModel, Integer amount, BigDecimal price, Volt voltage) {
