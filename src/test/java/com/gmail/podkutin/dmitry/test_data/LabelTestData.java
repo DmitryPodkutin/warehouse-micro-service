@@ -21,12 +21,12 @@ public class LabelTestData implements TestData<Label> {
 
     @Override
     public Label getNew() {
-        return Label.builder().modelName("UpdatedTestModel").amount(5).hydraulic_valve_id(100009).build();
+        return Label.builder().model("UpdatedTestModel").amount(5).hydraulic_valve_id(100009).build();
     }
 
     @Override
     public Label getUpdated() {
-        return Label.builder().id(LABEL_1.getId()).modelName("UpdatedTestModel")
+        return Label.builder().id(LABEL_1.getId()).model("UpdatedTestModel")
                 .amount(5).hydraulic_valve_id(100009).build();
     }
 

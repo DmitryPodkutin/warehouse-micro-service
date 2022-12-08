@@ -21,7 +21,7 @@ public class Label extends AbstractBaseEntity {
 
     @NotBlank
     @Column(name = "model_name")
-    private String modelName;
+    private String model;
 
     @Min(1)
     @Max(1000)
@@ -32,9 +32,9 @@ public class Label extends AbstractBaseEntity {
     private Integer hydraulic_valve_id;
 
     @Builder
-    public Label(Integer id, String modelName, Integer amount, Integer hydraulic_valve_id) {
+    public Label(Integer id, String model, Integer amount, Integer hydraulic_valve_id) {
         super(id);
-        this.modelName = modelName;
+        this.model = model;
         this.amount = amount;
         this.hydraulic_valve_id = hydraulic_valve_id;
     }
@@ -45,11 +45,11 @@ public class Label extends AbstractBaseEntity {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Label label = (Label) o;
-        return modelName.equals(label.modelName) && amount.equals(label.amount) && hydraulic_valve_id.equals(label.hydraulic_valve_id);
+        return model.equals(label.model) && amount.equals(label.amount) && hydraulic_valve_id.equals(label.hydraulic_valve_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), modelName, amount, hydraulic_valve_id);
+        return Objects.hash(super.hashCode(), model, amount, hydraulic_valve_id);
     }
 }
