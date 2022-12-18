@@ -1,6 +1,7 @@
 package com.gmail.podkutin.dmitry.model;
 
 import com.gmail.podkutin.dmitry.model.dto.ElectromagnetDTO;
+import com.gmail.podkutin.dmitry.model.dto.LabelDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,18 +17,19 @@ public class KitOfHydraulicValve {
     private Integer amount;
     private BigDecimal price;
     private ElectromagnetDTO electromagnet;
+    private LabelDTO label;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        KitOfHydraulicValve that = (KitOfHydraulicValve) o;
-        return model.equals(that.model) && amount.equals(that.amount) && price.equals(that.price) && electromagnet.equals(that.electromagnet);
+        KitOfHydraulicValve kit = (KitOfHydraulicValve) o;
+        return model.equals(kit.model) && amount.equals(kit.amount) && price.equals(kit.price) && electromagnet.equals(kit.electromagnet) && label.equals(kit.label);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(model, amount, price, electromagnet);
+        return Objects.hash(model, amount, price, electromagnet, label);
     }
 }
 

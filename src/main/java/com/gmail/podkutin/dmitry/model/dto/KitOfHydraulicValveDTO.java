@@ -13,7 +13,7 @@ import java.util.Objects;
 public class KitOfHydraulicValveDTO {
     private String model;
     private Volt volt;
-    Integer amount;
+    private Integer amount;
 
      public KitOfHydraulicValveDTO(KitOfHydraulicValveDTO kitOfHydraulicValveDTO) {
         this.model = kitOfHydraulicValveDTO.model;

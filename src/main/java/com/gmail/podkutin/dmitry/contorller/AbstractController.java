@@ -29,7 +29,7 @@ public abstract class AbstractController<E extends AbstractBaseEntity, S extends
     }
 
     @Override
-    public ResponseEntity<E> update(E entity) {
+    public ResponseEntity<E> update(@RequestBody E entity) {
         return entity != null
                 ? new ResponseEntity<>(service.update(entity), HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);

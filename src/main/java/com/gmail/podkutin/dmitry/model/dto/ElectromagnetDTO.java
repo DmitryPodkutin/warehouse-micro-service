@@ -11,11 +11,8 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 public class ElectromagnetDTO {
-
     private ElectromagnetModelDTO electromagnetModel;
-
     private Volt voltage;
-
     private Integer amount;
 
     public ElectromagnetDTO(ElectromagnetDTO electromagnetDTO) {
