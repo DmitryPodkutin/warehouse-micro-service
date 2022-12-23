@@ -16,9 +16,8 @@ public class HydraulicValveServiceImpl extends AbstractService<HydraulicValve, H
         super(repository);
         this.repository = repository;
     }
-
     public HydraulicValve getByModel(String model) {
         return repository.getByModel(model).orElseThrow(() ->
-                new NotFoundException("HydraulicValve model +" + model + " Not Found"));
+                new NotFoundException("HydraulicValve model " + model + " Not Found"));
     }
 }
