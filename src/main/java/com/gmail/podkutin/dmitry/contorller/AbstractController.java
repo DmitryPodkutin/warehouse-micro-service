@@ -55,11 +55,4 @@ public abstract class AbstractController<E extends AbstractBaseEntity, S extends
                 ? new ResponseEntity<>(entity, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<String> handleException(NotFoundException exception) {
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(exception.getMessage());
-    }
 }
