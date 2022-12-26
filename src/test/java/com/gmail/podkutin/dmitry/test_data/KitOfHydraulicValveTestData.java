@@ -23,6 +23,9 @@ public class KitOfHydraulicValveTestData {
     public static final KitOfHydraulicValveDTO KIT_OF_HYDRAULIC_VALVE_DTO = KitOfHydraulicValveDTO.builder()
             .model("РХ06574А1ОФ").volt(Volt.VOLT_24).build();
 
+    public static final KitOfHydraulicValveDTO KIT_OF_HYDRAULIC_VALVE_DTO_WITH_AMOUNT = KitOfHydraulicValveDTO.builder()
+            .model("РХ06574А1ОФ").amount(3).volt(Volt.VOLT_24).build();
+
     public static final List<KitOfHydraulicValveDTO> REQUEST_KITS = Arrays.asList(
             KitOfHydraulicValveDTO.builder()
                     .model("РХ06574А1ОФ")

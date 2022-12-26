@@ -2,7 +2,6 @@ package com.gmail.podkutin.dmitry.service.impl;
 
 import com.gmail.podkutin.dmitry.AbstractServiceTest;
 import com.gmail.podkutin.dmitry.exeption.EquipmentException;
-import com.gmail.podkutin.dmitry.model.KitOfHydraulicValve;
 import com.gmail.podkutin.dmitry.model.dto.KitOfHydraulicValveDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,10 +39,6 @@ class KitServiceImplTest extends AbstractServiceTest {
                 KIT_OF_HYDRAULIC_VALVE_1.getElectromagnet().getElectromagnetModel().getModel(),
                 KIT_OF_HYDRAULIC_VALVE_1.getElectromagnet().getVoltage()).getAmount());
         Assertions.assertEquals(5,labelService.getByModel(KIT_OF_HYDRAULIC_VALVE_DTO_SALE.getModel()).getAmount());
-
-//        Assertions.assertEquals(0, actualKit.getAmount());
-//        Assertions.assertEquals(0, actualKit.getElectromagnet().getAmount());
-//        Assertions.assertEquals(0, actualKit.getLabel().getAmount());
     }
 
     @Test
@@ -61,8 +56,8 @@ class KitServiceImplTest extends AbstractServiceTest {
     }
 
     @Test
-    void getAllFiltered() {
-        Assertions.assertEquals(KIT_OF_HYDRAULIC_VALVES, service.getAllFiltered(REQUEST_KITS));
-        Assertions.assertEquals(KIT_OF_HYDRAULIC_VALVES, service.getAllFiltered(REQUEST_KITS));
+    void getList() {
+        Assertions.assertEquals(KIT_OF_HYDRAULIC_VALVES, service.getList(REQUEST_KITS));
+        Assertions.assertEquals(KIT_OF_HYDRAULIC_VALVES, service.getList(REQUEST_KITS));
     }
 }
