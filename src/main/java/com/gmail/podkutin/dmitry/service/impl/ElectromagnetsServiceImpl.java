@@ -5,13 +5,15 @@ import com.gmail.podkutin.dmitry.model.Electromagnet;
 import com.gmail.podkutin.dmitry.model.Volt;
 import com.gmail.podkutin.dmitry.repository.ElectromagnetsRepository;
 import com.gmail.podkutin.dmitry.service.AbstractService;
+import com.gmail.podkutin.dmitry.service.ElectromagnetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
-public class ElectromagnetsServiceImpl extends AbstractService<Electromagnet, ElectromagnetsRepository> {
+public class ElectromagnetsServiceImpl extends AbstractService<Electromagnet, ElectromagnetsRepository>
+        implements ElectromagnetsService {
 
     private final ElectromagnetsRepository repository;
 
@@ -21,9 +23,9 @@ public class ElectromagnetsServiceImpl extends AbstractService<Electromagnet, El
     }
 
     public Electromagnet getByModelAndVoltage(String model, Volt volt) {
-       return repository.getByModel(model).orElse(new ArrayList<>())
-               .stream().filter(e->e.getVoltage().equals(volt)).findFirst()
-               .orElseThrow(() ->
-                       new NotFoundException("Electromagnet model +" + model + " Not Found"));
+        return repository.getByModel(model).orElse(new ArrayList<>())
+                .stream().filter(e -> e.getVoltage().equals(volt)).findFirst()
+                .orElseThrow(() ->
+                        new NotFoundException("Electromagnet model " + model + " Not Found"));
     }
 }

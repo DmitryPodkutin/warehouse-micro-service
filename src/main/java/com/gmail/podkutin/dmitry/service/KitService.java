@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface KitService<E, T> {
 
-    T sale(E kit);
+    void sale(E kit);
 
     T get(E kit);
 
-    List<T> getAll();
+    List<T> getList(List<E> kits);
 
-    List<T> getAllFiltered(List<E> kits);
+    void save(List<E> kits);
 }
