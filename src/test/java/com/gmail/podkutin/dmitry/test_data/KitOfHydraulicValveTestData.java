@@ -17,8 +17,11 @@ public class KitOfHydraulicValveTestData {
             , 2, new BigDecimal("4920.00"), new ElectromagnetDTO(new ElectromagnetModelDTO("NG6")
             , Volt.VOLT_24, 4), LabelDTO.builder().model("РХ06574А1ОФ").amount(2).build());
 
-    public static final KitOfHydraulicValveDTO KIT_OF_HYDRAULIC_VALVE_DTO_SALE = new KitOfHydraulicValveDTO(
-            "РХ06574А1", Volt.VOLT_24, 5);
+    public static final KitOfHydraulicValveDTO KIT_OF_HYDRAULIC_VALVE_DTO_FOR_SAVE = new KitOfHydraulicValveDTO(
+            "РХ06574А1", Volt.VOLT_24, 8);
+
+    public static final KitOfHydraulicValveDTO KIT_OF_HYDRAULIC_VALVE_DTO_FOR_SALE = new KitOfHydraulicValveDTO(
+            "РХ06574А1ОФ", Volt.VOLT_24, 5);
 
     public static final KitOfHydraulicValveDTO KIT_OF_HYDRAULIC_VALVE_DTO = KitOfHydraulicValveDTO.builder()
             .model("РХ06574А1ОФ").volt(Volt.VOLT_24).build();

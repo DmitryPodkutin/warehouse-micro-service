@@ -1,6 +1,7 @@
 package com.gmail.podkutin.dmitry.contorller;
 
 import com.gmail.podkutin.dmitry.model.KitOfHydraulicValve;
+import com.gmail.podkutin.dmitry.model.Volt;
 import com.gmail.podkutin.dmitry.model.dto.KitOfHydraulicValveDTO;
 import com.gmail.podkutin.dmitry.service.KitService;
 import com.gmail.podkutin.dmitry.service.impl.KitOfHydraulicValveServiceImpl;
@@ -27,24 +28,28 @@ public class KitOfHydraulicValveController {
     @PostMapping()
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void save(@RequestBody List<KitOfHydraulicValveDTO> kits) {
-        kitService.save(kits);
+        kitService.saveKits(kits);
     }
 
     @PreAuthorize("hasAuthority('write')")
     @DeleteMapping()
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void sale(@RequestBody KitOfHydraulicValveDTO kit) {
-        kitService.sale(kit);
+    void sale(@RequestParam String model,
+              @RequestParam Volt voltage,
+              @RequestParam Integer amount) {
+        if (amount > 0) {
+            kitService.saleKits(new KitOfHydraulicValveDTO(model, voltage, amount));
+        }
     }
 
     @PreAuthorize("hasAuthority('read')")
     @GetMapping()
-    ResponseEntity<List<KitOfHydraulicValve>> getKits(@RequestBody List<KitOfHydraulicValveDTO> kits) {
+    ResponseEntity<List<KitOfHydraulicValve>> getKitsAvailableForEquipment(@RequestBody List<KitOfHydraulicValveDTO> kits) {
         List<KitOfHydraulicValve> result = new ArrayList<>();
         if (kits.size() == 1) {
-            result.add(kitService.get(kits.get(0)));
+            result.add(kitService.getKitsAvailableForEquipment(kits.get(0)));
         } else {
-            result = kitService.getList(kits);
+            result = kitService.getListKitsAvailableForEquipment(kits);
         }
         return result != null
                 ? new ResponseEntity<>(result, HttpStatus.OK)
