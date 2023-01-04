@@ -34,4 +34,12 @@ public class LabelTestData implements TestData<Label> {
     public List<Label> getAll() {
         return Arrays.asList(LABEL_1, LABEL_2, LABEL_3, LABEL_4);
     }
+
+    public static Label getClone(Label label){
+        return Label.builder()
+                .id(label.getId())
+                .model(label.getModel())
+                .amount(label.getAmount())
+                .hydraulic_valve_id(label.getHydraulic_valve_id()).build();
+    }
 }

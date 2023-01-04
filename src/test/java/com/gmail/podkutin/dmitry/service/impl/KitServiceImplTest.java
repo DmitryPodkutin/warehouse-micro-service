@@ -2,12 +2,14 @@ package com.gmail.podkutin.dmitry.service.impl;
 
 import com.gmail.podkutin.dmitry.AbstractServiceTest;
 import com.gmail.podkutin.dmitry.exeption.EquipmentException;
+import com.gmail.podkutin.dmitry.model.Volt;
 import com.gmail.podkutin.dmitry.model.dto.KitOfHydraulicValveDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 import static com.gmail.podkutin.dmitry.test_data.KitOfHydraulicValveTestData.*;
@@ -55,7 +57,7 @@ class KitServiceImplTest extends AbstractServiceTest {
     }
 
     @Test
-    void saleException() {
+    void saleEquipmentException() {
         KitOfHydraulicValveDTO kitOfHydraulicValveDTO = new KitOfHydraulicValveDTO(KIT_OF_HYDRAULIC_VALVE_DTO.getModel()
                 , KIT_OF_HYDRAULIC_VALVE_DTO.getVolt(), 6);
         assertThrows(EquipmentException.class,
@@ -72,5 +74,41 @@ class KitServiceImplTest extends AbstractServiceTest {
     void getListKitsAvailableForEquipment() {
         Assertions.assertEquals(KIT_OF_HYDRAULIC_VALVES, service.getListKitsAvailableForEquipment(REQUEST_KITS));
         Assertions.assertEquals(KIT_OF_HYDRAULIC_VALVES, service.getListKitsAvailableForEquipment(REQUEST_KITS));
+    }
+
+    @Test
+    void createValidationException() {
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saveKits(List.of(KitOfHydraulicValveDTO.builder().model(" ").amount(10).volt(Volt.VOLT_24).build())));
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saveKits(List.of(KitOfHydraulicValveDTO.builder().model(null).amount(10).volt(Volt.VOLT_24).build())));
+
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saveKits(List.of(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(-1).volt(Volt.VOLT_24).build())));
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saveKits(List.of(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(101).volt(Volt.VOLT_24).build())));
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saveKits(List.of(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(null).volt(Volt.VOLT_24).build())));
+
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saveKits(List.of(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(2).volt(null).build())));
+    }
+
+    @Test
+    void updateValidationException() {
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saleKits(KitOfHydraulicValveDTO.builder().model(" ").amount(10).volt(Volt.VOLT_24).build()));
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saleKits(KitOfHydraulicValveDTO.builder().model(null).amount(10).volt(Volt.VOLT_24).build()));
+
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saleKits(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(-1).volt(Volt.VOLT_24).build()));
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saleKits(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(101).volt(Volt.VOLT_24).build()));
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saleKits(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(null).volt(Volt.VOLT_24).build()));
+
+        Assertions.assertThrows(ConstraintViolationException.class, () ->
+                service.saleKits(KitOfHydraulicValveDTO.builder().model("РХ06574А1").amount(2).volt(null).build()));
     }
 }

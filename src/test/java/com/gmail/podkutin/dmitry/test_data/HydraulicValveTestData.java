@@ -48,4 +48,17 @@ public class HydraulicValveTestData implements TestData<HydraulicValve> {
     public List<HydraulicValve> getAll() {
         return Arrays.asList(HYDRAULIC_VALVE_1, HYDRAULIC_VALVE_2, HYDRAULIC_VALVE_3, HYDRAULIC_VALVE_4);
     }
+
+    public static HydraulicValve getClone(HydraulicValve hydraulicValve) {
+        return HydraulicValve.builder()
+                .id(hydraulicValve.getId())
+                .model(hydraulicValve.getModel())
+                .amount(hydraulicValve.getAmount())
+                .price(hydraulicValve.getPrice())
+                .numberOfElectromagnetsToComplete(hydraulicValve.getNumberOfElectromagnetsToComplete())
+                .electromagnetModel(ElectromagnetModel.builder()
+                        .id(hydraulicValve.getElectromagnetModel().getId())
+                        .model(hydraulicValve.getElectromagnetModel().getModel()).build())
+                .build();
+    }
 }
