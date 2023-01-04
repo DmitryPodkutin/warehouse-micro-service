@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -23,11 +24,14 @@ public class Label extends AbstractBaseEntity {
     @Column(name = "model_name")
     private String model;
 
+    @NotNull
     @Min(1)
     @Max(1000)
     @Column(name = "amount")
     private Integer amount;
 
+    @NotNull
+    @Min(1)
     @Column(name = "hydraulic_valve_id")
     private Integer hydraulic_valve_id;
 

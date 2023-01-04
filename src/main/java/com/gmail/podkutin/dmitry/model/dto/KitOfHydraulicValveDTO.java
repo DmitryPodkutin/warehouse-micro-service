@@ -5,14 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Data
 @Builder
 @AllArgsConstructor
 public class KitOfHydraulicValveDTO {
+
+    @NotBlank
+    @Pattern(
+            regexp = "^[а-яА-Я0-9]+$",
+            message = "Не соответствует формату(используйте кириллицу)"
+    )
     private final String model;
+
+    @NotNull
     private final Volt volt;
+
+    @NotNull
+    @Min(0)
+    @Max(100)
     private final Integer amount;
 
     public KitOfHydraulicValveDTO(KitOfHydraulicValveDTO kitOfHydraulicValveDTO) {

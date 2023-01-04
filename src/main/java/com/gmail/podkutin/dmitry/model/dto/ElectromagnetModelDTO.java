@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Data
@@ -11,6 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class ElectromagnetModelDTO {
 
+    @NotBlank
     private String model;
 
     @Override

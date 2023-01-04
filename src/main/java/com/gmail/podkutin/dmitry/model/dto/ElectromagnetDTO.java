@@ -5,14 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Data
 @Builder
 @AllArgsConstructor
 public class ElectromagnetDTO {
+
+    @NotNull
     private ElectromagnetModelDTO electromagnetModel;
+
+    @NotNull
     private Volt voltage;
+
+    @Min(0)
+    @Max(100)
     private Integer amount;
 
     public ElectromagnetDTO(ElectromagnetDTO electromagnetDTO) {

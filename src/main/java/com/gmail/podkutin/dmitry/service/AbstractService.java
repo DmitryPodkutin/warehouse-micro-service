@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static com.gmail.podkutin.dmitry.util.ValidationUtil.checkNotFoundWithId;
 
-public abstract class AbstractService<E extends AbstractBaseEntity, R extends JpaRepository<E,Integer>>
+public abstract class AbstractService<E extends AbstractBaseEntity, R extends JpaRepository<E, Integer>>
         implements CommonService<E> {
 
     private final R repository;

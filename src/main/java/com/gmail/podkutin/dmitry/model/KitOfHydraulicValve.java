@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.Column;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -13,10 +15,29 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 public class KitOfHydraulicValve {
+
+    @NotEmpty
+    @Pattern(
+            regexp = "^[а-яА-Я0-9]+$",
+            message = "Не соответствует формату(испльзуйте кирилицу)"
+    )
     private String model;
+
+    @NotNull
+    @Min(0)
+    @Max(100)
     private Integer amount;
+
+    @NotNull
+    @DecimalMin(value = "0.0", inclusive = false)
+    @Digits(integer = 5, fraction = 2)
+    @Column(name = "price")
     private BigDecimal price;
+
+    @NotNull
     private ElectromagnetDTO electromagnet;
+
+    @NotNull
     private LabelDTO label;
 
     @Override

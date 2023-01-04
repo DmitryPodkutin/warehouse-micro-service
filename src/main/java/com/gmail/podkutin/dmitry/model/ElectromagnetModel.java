@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -14,6 +15,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "electromagnets_models")
 public class ElectromagnetModel extends AbstractBaseEntity {
+
+    @NotBlank
     private String model;
 
     @Builder

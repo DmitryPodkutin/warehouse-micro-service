@@ -1,7 +1,7 @@
 package com.gmail.podkutin.dmitry.service.impl;
 
 import com.gmail.podkutin.dmitry.exeption.NotFoundException;
-import com.gmail.podkutin.dmitry.model.*;
+import com.gmail.podkutin.dmitry.model.HydraulicValve;
 import com.gmail.podkutin.dmitry.repository.HydraulicValvesRepository;
 import com.gmail.podkutin.dmitry.service.AbstractService;
 import com.gmail.podkutin.dmitry.service.HydraulicValveService;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class HydraulicValveServiceImpl extends AbstractService<HydraulicValve, HydraulicValvesRepository>
         implements HydraulicValveService {
 
-    HydraulicValvesRepository repository;
+    private final HydraulicValvesRepository repository;
 
     public HydraulicValveServiceImpl(@Autowired HydraulicValvesRepository repository) {
         super(repository);

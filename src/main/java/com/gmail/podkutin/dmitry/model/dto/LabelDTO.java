@@ -4,20 +4,31 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Data
 @Builder
 @AllArgsConstructor
-public class LabelDTO  {
+public class LabelDTO {
+
+    @NotBlank
+    @Pattern(
+            regexp = "^[а-яА-Я0-9]+$",
+            message = "Не соответствует формату(испльзуйте кирилицу)"
+    )
     private String model;
+
+    @NotNull
+    @Min(0)
+    @Max(1000)
     private Integer amount;
 
     @Builder
     public LabelDTO(Integer id, String model, Integer amount) {
-         this.model = model;
+        this.model = model;
         this.amount = amount;
-     }
+    }
 
     @Override
     public boolean equals(Object o) {

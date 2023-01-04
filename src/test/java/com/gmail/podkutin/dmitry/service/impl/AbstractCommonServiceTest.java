@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -35,7 +36,7 @@ public abstract class AbstractCommonServiceTest<E extends AbstractBaseEntity, R 
         E entity = testData.getNew();
         entity.setId(NOT_FOUND_ID);
         assertNull(service.create(entity));
-        assertThrows(NullPointerException.class,
+        assertThrows(ConstraintViolationException.class,
                 () -> service.create(null));
     }
 
@@ -46,7 +47,7 @@ public abstract class AbstractCommonServiceTest<E extends AbstractBaseEntity, R 
         Assertions.assertEquals(expected, service.get(expected.getId()));
         assertThrows(NotFoundException.class,
                 () -> service.update(testData.getNew()));
-        assertThrows(NullPointerException.class,
+        assertThrows(ConstraintViolationException.class,
                 () -> service.update(null));
     }
 
@@ -63,6 +64,12 @@ public abstract class AbstractCommonServiceTest<E extends AbstractBaseEntity, R 
     }
 
     @Test
+    void deleteValidateException() {
+        Assertions.assertThrows(ConstraintViolationException.class, () -> service.delete(0));
+        Assertions.assertThrows(ConstraintViolationException.class, () -> service.delete(-1));
+    }
+
+    @Test
     void get() {
         E expected = service.get(testData.getFirsEntity().getId());
         Assertions.assertNotNull(expected);
@@ -73,6 +80,14 @@ public abstract class AbstractCommonServiceTest<E extends AbstractBaseEntity, R 
     void getNotFound() {
         Assertions.assertThrows(NotFoundException.class,
                 () -> service.get(NOT_FOUND_ID));
+    }
+
+    @Test
+    void getValidateException() {
+        Assertions.assertThrows(ConstraintViolationException.class,
+                () -> service.get(0));
+        Assertions.assertThrows(ConstraintViolationException.class,
+                () -> service.get(-1));
     }
 
     @Test
